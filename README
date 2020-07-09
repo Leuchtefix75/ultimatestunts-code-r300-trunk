@@ -40,3 +40,40 @@ FMOD. If OpenAL is not found, Ultimate Stunts is configured without sound suppor
 --with-fmod always tries to use FMOD, and completely ignores the presence of
 OpenAL. If FMOD is not found, Ultimate Stunts is configured without sound support.
 
+===================================================================================
+this is a copy of the unchanged r300 version for my research, the original code is puplished under the GPL lizense
+the game has 4x wheel dynamic's!
+it is as best to the original 4D-Sports/Stunts and at least the only "clone" I got compiled
+with some little modifications I got it run at 800x600 60Hz on a RPI3 powered by NOOBS/Raspbian(X11/ARMv7+)
+
+#DEV packages
+libsdl
+libgetext
+libopenal (optional for sound)
+
+#prepare systems settings
+aclocal  (regenerates the .M4 file)
+autoconf 
+automake
+
+#prepare compiler settings
+mkdir build
+cd build
+export CPPFLAGS='-Ofast -fpermissive -fsigned-char -rpath' #not needed, just to try a diffrence
+../configure --prefix=/home/pi/Desktop/STUNTS
+#if ' make clean ' and new run of ../configure don't work, ' rmdir build --ignore-fail-on-non-empty '
+
+#build and install (what the compiler finaly does): 
+#    Lexer - break the program up into words
+#    Parser - check that the syntax of the sentences are correct
+#    Semantic Analysis - check that the sentences make sense
+#    Optimizer - edit the sentences for brevity (the -O<> flag for example)
+#    Code generator - output something with equivalent semantic meaning using another vocabulary (Linker against libraries)
+make
+make install
+
+#in my example the changed tracks and the .conf file can be found in /home/pi/.ultimatestunts
+
+#similar games I were able to run
+NeedForMadnes2 -is a arcade racing fun game, it needs JRE7 witch is deprecaded, or someone who fix the code, or version 3
+StuntCarRacing -lawpoly + lowframerate racing on a wall, but still fun ...if you find the NO2 button
